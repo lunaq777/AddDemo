@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_text_height"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/button_margin_left"
+        android:background="@color/colorBlue"
+        android:shadowColor="?attr/colorPrimary"
+        android:text="Next"
+        android:textColor="?attr/colorPrimary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/add_title"
+            android:layout_width="@dimen/edit_height"
+            android:layout_height="@dimen/button_text_height"
+            android:layout_marginLeft="@dimen/margin_left_foot"
+            android:layout_marginTop="@dimen/button_text_height"
+            android:hint="@string/title_hint"
+            android:textColor="@color/colorBlack"
+            android:background="@color/colorBlue" />
+
+        <EditText
+            android:id="@+id/add_description"
+            android:layout_width="@dimen/edit_height"
+            android:layout_height="@dimen/edit_width"
+            android:layout_marginLeft="@dimen/margin_left_foot"
+            android:layout_marginTop="@dimen/margin_ten"
+            android:hint="@string/description_hint"
+            android:background="@color/colorBlue"
+            android:textColor="@color/colorBlack"
+            android:gravity="top|left"
+            android:lines="14"
+            android:maxLength="512"
+            android:maxLines="14"
+            android:minLines="14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_ten"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/add_price"
+                android:layout_width="@dimen/edit_width"
+                android:layout_height="@dimen/button_text_height"
+                android:layout_marginLeft="@dimen/margin_left_foot"
+                android:hint="@string/price_hint"
+                android:textColor="@color/colorBlack"
+                android:background="@color/colorBlue" />
+
+            <TextView
+                android:id="@+id/price_text"
+                android:layout_width="@dimen/button_text_height"
+                android:layout_height="@dimen/button_text_height"
+                android:layout_marginLeft="@dimen/margin_ten"
+                android:text="\u20AC"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
+
+
+
