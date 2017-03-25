@@ -1,5 +1,11 @@
 package fragments;
 
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,6 +20,10 @@ import android.widget.EditText;
 
 import com.example.lucky.adddemo.NavigationActivity;
 import com.example.lucky.adddemo.R;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import utils.Switcher;
 
@@ -30,6 +40,7 @@ public class ContactsFragment extends Fragment {
     private CheckBox mCheckFaceBook;
     private CheckBox mCheckLocation;
     private EditText mPhoneText;
+    private NavigationActivity mActivity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +50,8 @@ public class ContactsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.contacts_fragment, container, false);
-        setSwitcher((Switcher) getActivity());
+        mActivity = (NavigationActivity) getActivity();
+        setSwitcher(mActivity);
         mPhoneText = (EditText) view.findViewById(R.id.ph_num);
         mCheckFaceBook = (CheckBox) view.findViewById(R.id.check_face);
         mCheckLocation = (CheckBox) view.findViewById(R.id.check_loc);
@@ -47,13 +59,17 @@ public class ContactsFragment extends Fragment {
         mCheckFaceBook.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+                if (isChecked){
+//                    mActivity.shareFaceBook();
+                }
             }
         });
         mCheckLocation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+                if (isChecked){
+//                    findMyLocation();
+                }
             }
         });
 
@@ -79,7 +95,46 @@ public class ContactsFragment extends Fragment {
         super.onResume();
     }
 
-    private void setSwitcher(Switcher switcher){
+    private void setSwitcher(Switcher switcher) {
         this.mSwitcher = switcher;
     }
+
+    //TODO Service problem with Locations !
+    private void findMyLocation() {
+        LocationManager locationManager = (LocationManager) mActivity.getSystemService(Context.LOCATION_SERVICE);
+        LocationListener locationListener = new AwesomeLocationListener();
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener);
+    }
+
+    private class AwesomeLocationListener implements LocationListener {
+
+        @Override
+        public void onLocationChanged(Location loc) {
+            String cityName = " ";
+            String countryName = " ";
+            Geocoder gcd = new Geocoder(getContext(), Locale.getDefault());
+            List<Address> addresses;
+            try {
+                addresses = gcd.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+                if (addresses.size() > 0) {
+                    cityName = addresses.get(0).getLocality();
+                    countryName = addresses.get(0).getCountryName();
+                }
+                mActivity.addLocation(cityName + ", " + countryName);
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {}
+
+        @Override
+        public void onProviderEnabled(String provider) {}
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {}
+    }
+
 }

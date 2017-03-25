@@ -5,16 +5,18 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -147,4 +149,16 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         intent.setType("image/*");
         startActivityForResult(intent, RESULT_LOAD_IMAGE);
     }
+
+    //TODO Facebook sharing !
+    public void shareFaceBook(){
+        SharePhoto photo = new SharePhoto.Builder()
+                .setBitmap(mContainer.getPicture())
+                .build();
+        SharePhotoContent content = new SharePhotoContent.Builder()
+                .addPhoto(photo)
+                .build();
+        ShareDialog.show(this, content);
+    }
+
 }

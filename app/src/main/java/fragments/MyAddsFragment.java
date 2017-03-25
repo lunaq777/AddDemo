@@ -3,15 +3,18 @@ package fragments;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.lucky.adddemo.NavigationActivity;
 import com.example.lucky.adddemo.R;
 
+import utils.JSONHelper;
 import utils.Switcher;
 
 /**
@@ -40,6 +43,24 @@ public class MyAddsFragment extends Fragment {
         mListView = (ListView) view.findViewById(R.id.list_adds);
         mListView.setAdapter(mActivity.getAdapter(getActivity()));
         mSaveButton = (Button) view.findViewById(R.id.button_save_two);
+
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSwitcher.onFragmentSwitch(new AddInfoFragment(), AddInfoFragment.TITLE, AddInfoFragment.TAG);
+                getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+        });
+
+        mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
         return view;
     }
 

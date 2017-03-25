@@ -23,6 +23,7 @@
         <item>For Sale</item>
         <item>Services</item>
         <item>Vehicles</item>
+        <item>Property</item>
     </string-array>
 
     <string-array name="subcategory">
@@ -38,5 +39,12 @@
         <item>Elder care</item>
         <item>-----</item>
         <item>Cars</item>
+        <item>Motorcycles</item>
+        <item>Bicycles</item>
+        <item>Boats</item>
+        <item>-----</item>
+        <item>Flat Sharing</item>
+        <item>Houses for sale</item>
+        <item>Rooms to rent</item>
     </string-array>
 </resources>
