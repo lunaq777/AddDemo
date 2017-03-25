@@ -6,6 +6,7 @@
     <string name="phn_num">Phone Number (optional)</string>
     <string name="price_hint">Price</string>
     <string name="button_next">Next</string>
+    <string name="button_save">Save</string>
     <string name="for_sale">For Sale</string>
     <string name="services">Services</string>
     <string name="vehicles">Vehicles</string>

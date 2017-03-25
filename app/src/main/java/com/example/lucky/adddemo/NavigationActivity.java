@@ -10,15 +10,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import fragments.AddInfoFragment;
+import fragments.MyAddsFragment;
 import utils.Switcher;
 
-public class NavigationActivity extends AppCompatActivity implements View.OnClickListener, Switcher{
+public class NavigationActivity extends AppCompatActivity implements View.OnClickListener, Switcher {
 
     private Toolbar mToolbar;
     private TextView mToolbarTitle;
     private ImageButton mMyAdds;
     private ImageButton mPlaceAd;
-    private Fragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +27,13 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         initGUI();
     }
 
-    private void initGUI(){
+    private void initGUI() {
         mToolbar = (Toolbar) findViewById(R.id.navi_toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.navi_toolbar_title);
-        mFragment = new Fragment(); //TODO
         mMyAdds = (ImageButton) findViewById(R.id.my_button);
         mPlaceAd = (ImageButton) findViewById(R.id.place_button);
         mMyAdds.setOnClickListener(this);
         mPlaceAd.setOnClickListener(this);
-        mMyAdds.setImageDrawable(this.getDrawable(R.drawable.ic_my_ads_prs));
-        mPlaceAd.setImageDrawable(this.getDrawable(R.drawable.ic_place_ads_prs));
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_fragment_container, new AddInfoFragment(), AddInfoFragment.TAG).commit();
@@ -44,19 +41,28 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.my_button:
+                mMyAdds.setImageDrawable(getDrawable(R.drawable.ic_my_ads_prs));
+                switchFragment(new MyAddsFragment(), MyAddsFragment.TITLE, MyAddsFragment.TAG);
                 break;
             case R.id.place_button:
+                mMyAdds.setImageDrawable(getDrawable(R.drawable.ic_my_ads));
+                switchFragment(new AddInfoFragment(), AddInfoFragment.TITLE, AddInfoFragment.TAG);
                 break;
         }
     }
 
     @Override
     public void onFragmentSwitch(Fragment fragment, String title, String tag) {
-        mToolbarTitle.setText(title);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.main_fragment_container, fragment, tag).commit();
+        switchFragment(fragment, title, tag);
+    }
+
+    @Override
+    public void onTabChange(boolean isChanged, String curTitle) {
+        mToolbarTitle.setText(curTitle);
+        mMyAdds.setImageDrawable(isChanged ? getDrawable(R.drawable.ic_my_ads_prs) : getDrawable(R.drawable.ic_my_ads));
+        mPlaceAd.setImageDrawable(isChanged ? getDrawable(R.drawable.ic_place_ads) : getDrawable(R.drawable.ic_place_ads_prs));
     }
 
     @Override
@@ -64,4 +70,21 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         super.onSaveInstanceState(outState);
     }
 
+    @Override
+    public void onBackPressed() {
+        FragmentManager fm = getSupportFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            fm.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void switchFragment(Fragment fragment, String title, String tag){
+        mToolbarTitle.setText(title);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.main_fragment_container, fragment, tag)
+                .addToBackStack(tag).commit();
+    }
 }

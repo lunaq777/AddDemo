@@ -6,14 +6,24 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
 
 import com.example.lucky.adddemo.R;
+
+import utils.Switcher;
 
 /**
  * Created by Lucky on 3/23/2017.
  */
 
 public class MyAddsFragment extends Fragment {
+
+    public static final String TAG = "MyAddsFragment";
+    public static final String TITLE = "My Adds";
+    private Switcher mSwitcher;
+    private ListView mListView;
+    private Button mSaveButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,11 +33,24 @@ public class MyAddsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_adds_fragment, container, false);
+        setSwitcher((Switcher) getActivity());
+        mListView = (ListView) view.findViewById(R.id.list_adds);
+        mSaveButton = (Button) view.findViewById(R.id.button_save_two);
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        mSwitcher.onTabChange(true, TITLE);
+        super.onResume();
+    }
+
+    private void setSwitcher(Switcher switcher){
+        this.mSwitcher = switcher;
     }
 }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button_next"
+        android:id="@+id/button_save"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_text_height"
         android:layout_gravity="center_vertical|bottom"
@@ -13,7 +13,7 @@
         android:layout_marginBottom="@dimen/margin_ten"
         android:background="@drawable/blue_rectangle"
         android:shadowColor="?attr/colorPrimary"
-        android:text="@string/button_next"
+        android:text="@string/button_save"
         android:textColor="?attr/colorPrimary" />
 
     <LinearLayout
@@ -41,6 +41,7 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/check_face"
             android:layout_width="@dimen/checkbox_width"
             android:layout_height="match_parent"
             android:buttonTint="@color/colorBlack"/>
@@ -64,6 +65,7 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/check_loc"
             android:layout_width="@dimen/checkbox_width"
             android:layout_height="match_parent"
             android:buttonTint="@color/colorBlack"/>

@@ -48,6 +48,12 @@ public class AddInfoFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    @Override
+    public void onResume() {
+        mSwitcher.onTabChange(false, TITLE);
+        super.onResume();
+    }
+
     private void setSwitcher(Switcher switcher){
         this.mSwitcher = switcher;
     }

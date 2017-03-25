@@ -50,6 +50,12 @@ public class PhotoFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onResume() {
+        mSwitcher.onTabChange(false, TITLE);
+        super.onResume();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.camera_button:

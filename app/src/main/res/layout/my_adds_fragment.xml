@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ListView
-        android:id="@+id/listview_contacts"
+        android:id="@+id/list_adds"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/button_save_two"
         android:cacheColorHint="#000000"
         android:clipToPadding="false"
         android:divider="@null"
@@ -16,4 +17,16 @@
         android:fastScrollEnabled="false"
         android:paddingBottom="10dp" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/button_save_two"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_text_height"
+        android:layout_gravity="center_vertical|bottom"
+        android:layout_marginLeft="@dimen/button_margin_left"
+        android:layout_marginTop="@dimen/margin_ten"
+        android:background="@drawable/blue_rectangle"
+        android:shadowColor="?attr/colorPrimary"
+        android:text="@string/button_save"
+        android:textColor="?attr/colorPrimary" />
+
+</RelativeLayout>

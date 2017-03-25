@@ -8,4 +8,5 @@ import android.support.v4.app.Fragment;
 
 public interface Switcher {
     void onFragmentSwitch(Fragment fragment, String title, String tag);
+    void onTabChange(boolean isChanged, String curTitle);
 }
