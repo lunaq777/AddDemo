@@ -30,7 +30,10 @@
         android:hint="@string/phn_num"
         android:textColorHint="@color/colorGrey"
         android:textColor="@color/colorBlack"
-        android:background="@drawable/blue_rectangle" />
+        android:background="@drawable/blue_rectangle"
+        android:maxLength="20"
+        android:singleLine="true"
+        android:ellipsize="end" />
     </LinearLayout>
 
     <LinearLayout

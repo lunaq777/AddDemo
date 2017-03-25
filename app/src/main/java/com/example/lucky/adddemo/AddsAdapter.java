@@ -22,13 +22,10 @@ public class AddsAdapter extends ArrayAdapter<String> {
     private final String[] mLocation;
     private final String[] mDescription;
     private final Bitmap[] mImgId;
-    private final Integer[] mPriceId;
-    private final Integer[] mLocId;
-    private final Integer[] mDescriptionId;
 
 
     public AddsAdapter(Activity context, String[] title, String[] price, String[] location, String[] description,
-                       Bitmap[] imgId, Integer[] priceId, Integer[] locId, Integer[] decripId) {
+                       Bitmap[] imgId) {
         super(context, R.layout.list_item, title);
         this.mContext = context;
         this.mTitle = title;
@@ -36,9 +33,6 @@ public class AddsAdapter extends ArrayAdapter<String> {
         this.mLocation = location;
         this.mDescription = description;
         this.mImgId = imgId;
-        this.mPriceId = priceId;
-        this.mLocId = locId;
-        this.mDescriptionId = decripId;
     }
 
     @NonNull
@@ -47,18 +41,12 @@ public class AddsAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater = mContext.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.list_item, null, true);
         ImageView imgId = (ImageView) rowView.findViewById(R.id.icon_main);
-        ImageView imgPriceId = (ImageView) rowView.findViewById(R.id.icon_price);
-        ImageView imgLocId = (ImageView) rowView.findViewById(R.id.icon_loc);
-        ImageView imgDesId = (ImageView) rowView.findViewById(R.id.icon_description);
         TextView title = (TextView) rowView.findViewById(R.id.title);
         TextView price = (TextView) rowView.findViewById(R.id.price);
         TextView loc = (TextView) rowView.findViewById(R.id.loc);
         TextView descr = (TextView) rowView.findViewById(R.id.description);
 
         imgId.setImageBitmap(mImgId[position]);
-        imgPriceId.setImageResource(mPriceId[position]);
-        imgLocId.setImageResource(mLocId[position]);
-        imgDesId.setImageResource(mDescriptionId[position]);
         title.setText(mTitle[position]);
         price.setText(mPrice[position]);
         loc.setText(mLocation[position]);

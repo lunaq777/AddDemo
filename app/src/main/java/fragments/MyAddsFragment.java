@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.lucky.adddemo.AddsAdapter;
 import com.example.lucky.adddemo.R;
 
 import utils.Switcher;
@@ -36,6 +37,7 @@ public class MyAddsFragment extends Fragment {
         setSwitcher((Switcher) getActivity());
         mListView = (ListView) view.findViewById(R.id.list_adds);
         mSaveButton = (Button) view.findViewById(R.id.button_save_two);
+//        AddsAdapter adaprt = new AddsAdapter();
         return view;
     }
 
@@ -52,5 +54,18 @@ public class MyAddsFragment extends Fragment {
 
     private void setSwitcher(Switcher switcher){
         this.mSwitcher = switcher;
+    }
+
+    private String setTitle(){
+        return "";
+    }
+    private String setPrice(){
+        return "";
+    }
+    private String setLocation(){
+        return "";
+    }
+    private String setDescription(){
+        return "";
     }
 }
