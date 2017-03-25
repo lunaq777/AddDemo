@@ -3,6 +3,7 @@ package fragments;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class ContactsFragment extends Fragment {
     private Button mSaveButton;
     private CheckBox mCheckFaceBook;
     private CheckBox mCheckLocation;
-    private EditText mPhoneNum;
+    private EditText mPhoneText;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class ContactsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.contacts_fragment, container, false);
         setSwitcher((Switcher) getActivity());
-        mPhoneNum = (EditText) view.findViewById(R.id.ph_num);
+        mPhoneText = (EditText) view.findViewById(R.id.ph_num);
         mCheckFaceBook = (CheckBox) view.findViewById(R.id.check_face);
         mCheckLocation = (CheckBox) view.findViewById(R.id.check_loc);
 
@@ -60,6 +61,7 @@ public class ContactsFragment extends Fragment {
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "Phone: " + mPhoneText.getText().toString());
                 mSwitcher.onFragmentSwitch(new MyAddsFragment(), MyAddsFragment.TITLE, MyAddsFragment.TAG);
             }
         });

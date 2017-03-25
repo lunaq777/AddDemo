@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.lucky.adddemo.AddsAdapter;
+import com.example.lucky.adddemo.NavigationActivity;
 import com.example.lucky.adddemo.R;
 
 import utils.Switcher;
@@ -25,6 +25,7 @@ public class MyAddsFragment extends Fragment {
     private Switcher mSwitcher;
     private ListView mListView;
     private Button mSaveButton;
+    private NavigationActivity mActivity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,10 +35,11 @@ public class MyAddsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_adds_fragment, container, false);
-        setSwitcher((Switcher) getActivity());
+        mActivity = (NavigationActivity) getActivity();
+        setSwitcher(mActivity);
         mListView = (ListView) view.findViewById(R.id.list_adds);
+        mListView.setAdapter(mActivity.getAdapter(getActivity()));
         mSaveButton = (Button) view.findViewById(R.id.button_save_two);
-//        AddsAdapter adaprt = new AddsAdapter();
         return view;
     }
 
@@ -56,16 +58,4 @@ public class MyAddsFragment extends Fragment {
         this.mSwitcher = switcher;
     }
 
-    private String setTitle(){
-        return "";
-    }
-    private String setPrice(){
-        return "";
-    }
-    private String setLocation(){
-        return "";
-    }
-    private String setDescription(){
-        return "";
-    }
 }

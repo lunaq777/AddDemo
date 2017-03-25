@@ -21,19 +21,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/ph_num"
-        android:layout_width="@dimen/edit_height"
-        android:layout_height="@dimen/button_text_height"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/button_margin_left"
-        android:hint="@string/phn_num"
-        android:textColorHint="@color/colorGrey"
-        android:textColor="@color/colorBlack"
-        android:background="@drawable/blue_rectangle"
-        android:maxLength="20"
-        android:singleLine="true"
-        android:ellipsize="end" />
+        <EditText
+            android:id="@+id/ph_num"
+            android:layout_width="@dimen/edit_height"
+            android:layout_height="@dimen/button_text_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/button_margin_left"
+            android:hint="@string/phn_num"
+            android:textColorHint="@color/colorGrey"
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/blue_rectangle"
+            android:inputType="number"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:ellipsize="end" />
     </LinearLayout>
 
     <LinearLayout

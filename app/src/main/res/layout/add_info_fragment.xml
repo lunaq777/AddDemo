@@ -65,6 +65,7 @@
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/blue_rectangle"
                 android:maxLength="12"
+                android:inputType="number"
                 android:singleLine="true"
                 android:ellipsize="end"/>
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.lucky.adddemo.NavigationActivity;
 import com.example.lucky.adddemo.R;
@@ -23,6 +24,10 @@ public class AddInfoFragment extends Fragment {
     public static final String TITLE = "Add Info";
     private Switcher mSwitcher;
     private Button mNextButton;
+    private NavigationActivity mActivity;
+    private EditText mTitleText;
+    private EditText mDescrText;
+    private EditText mPriceText;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,12 +37,19 @@ public class AddInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_info_fragment, container, false);
-        setSwitcher((Switcher) getActivity());
+        mActivity = (NavigationActivity) getActivity();
+        setSwitcher(mActivity);
+        mTitleText = (EditText) view.findViewById(R.id.add_title);
+        mDescrText = (EditText) view.findViewById(R.id.add_description);
+        mPriceText = (EditText) view.findViewById(R.id.add_price);
         mNextButton = (Button) view.findViewById(R.id.button_next);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSwitcher.onFragmentSwitch(new PhotoFragment(), PhotoFragment.TITLE, PhotoFragment.TAG);
+                mActivity.addTitle(mTitleText.getText().toString());
+                mActivity.addDescription(mDescrText.getText().toString());
+                mActivity.addPrice(mPriceText.getText().toString());
             }
         });
         return view;

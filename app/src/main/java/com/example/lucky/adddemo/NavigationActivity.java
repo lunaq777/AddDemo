@@ -1,5 +1,7 @@
 package com.example.lucky.adddemo;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import fragments.AddInfoFragment;
 import fragments.MyAddsFragment;
+import utils.AddContainer;
 import utils.Switcher;
 
 public class NavigationActivity extends AppCompatActivity implements View.OnClickListener, Switcher {
@@ -19,6 +22,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     private TextView mToolbarTitle;
     private ImageButton mMyAdds;
     private ImageButton mPlaceAd;
+    private AddContainer mContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initGUI() {
+        mContainer = new AddContainer(" ", " ", " ", " ", null);
         mToolbar = (Toolbar) findViewById(R.id.navi_toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.navi_toolbar_title);
         mMyAdds = (ImageButton) findViewById(R.id.my_button);
@@ -80,11 +85,32 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private void switchFragment(Fragment fragment, String title, String tag){
+    private void switchFragment(Fragment fragment, String title, String tag) {
         mToolbarTitle.setText(title);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.main_fragment_container, fragment, tag)
                 .addToBackStack(tag).commit();
+    }
+
+    public void addTitle(String title) {
+        mContainer.setTitle(title);
+    }
+
+    public void addPrice(String price) {
+        mContainer.setPrice(price);
+    }
+
+    public void addLocation(String location) {
+        mContainer.setLocation(location);
+    }
+
+    public void addDescription(String description) {
+        mContainer.setDescription(description);
+    }
+
+    public AddsAdapter getAdapter(Activity context){
+        return new AddsAdapter(context, mContainer.getTitles(), mContainer.getPrices(),
+                mContainer.getLocations(), mContainer.getDescriptions(), mContainer.getPictures());
     }
 }

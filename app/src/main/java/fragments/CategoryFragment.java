@@ -68,6 +68,7 @@ public class CategoryFragment extends Fragment {
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int position, long id) {
                 mSpinItem = arg0.getItemAtPosition(position).toString();
+                Log.d(TAG, "Category: " + mSpinItem);
             }
 
             @Override
@@ -83,6 +84,7 @@ public class CategoryFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mSubSpinItem = parent.getItemAtPosition(position).toString();
+                Log.d(TAG, "Sub Category: " + mSubSpinItem);
             }
 
             @Override

@@ -1,7 +1,6 @@
 package com.example.lucky.adddemo;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -17,12 +16,11 @@ import android.widget.TextView;
 
 public class AddsAdapter extends ArrayAdapter<String> {
     private final Activity mContext;
-    private final String[] mTitle;
-    private final String[] mPrice;
-    private final String[] mLocation;
-    private final String[] mDescription;
-    private final Bitmap[] mImgId;
-
+    private  String[] mTitle;
+    private  String[] mPrice;
+    private  String[] mLocation;
+    private  String[] mDescription;
+    private  Bitmap[] mImgId;
 
     public AddsAdapter(Activity context, String[] title, String[] price, String[] location, String[] description,
                        Bitmap[] imgId) {
