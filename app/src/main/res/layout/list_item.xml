@@ -5,12 +5,12 @@
 
     <ImageView
         android:id="@+id/icon_main"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
+        android:layout_width="@dimen/image_height"
+        android:layout_height="@dimen/margin_ten"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="6dip" />
+        android:layout_marginRight="6dip"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/description" />
 
     <TextView
         android:id="@+id/title"

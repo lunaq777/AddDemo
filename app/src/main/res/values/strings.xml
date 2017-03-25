@@ -13,6 +13,8 @@
     <string name="add_info">Add Info</string>
     <string name="face_book">Share on Facebook</string>
     <string name="location">Show my Location</string>
+    <string name="camera">Update Camera soon!</string>
+
 
 
     <string-array name="category">

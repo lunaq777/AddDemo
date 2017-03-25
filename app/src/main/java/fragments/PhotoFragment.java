@@ -3,12 +3,15 @@ package fragments;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.lucky.adddemo.NavigationActivity;
 import com.example.lucky.adddemo.R;
 
 import utils.Switcher;
@@ -25,6 +28,7 @@ public class PhotoFragment extends Fragment implements View.OnClickListener {
     private ImageButton mCameraButton;
     private ImageButton mGaleryButton;
     private Button mNextButton;
+    private NavigationActivity mActivity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +44,8 @@ public class PhotoFragment extends Fragment implements View.OnClickListener {
         mCameraButton.setOnClickListener(this);
         mGaleryButton.setOnClickListener(this);
         mNextButton.setOnClickListener(this);
-        setSwitcher((Switcher) getActivity());
+        mActivity = (NavigationActivity) getActivity();
+        setSwitcher(mActivity);
         return view;
     }
 
@@ -59,8 +64,10 @@ public class PhotoFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.camera_button:
+                Toast.makeText(getContext(), getContext().getResources().getString(R.string.camera), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.gallery_button:
+                mActivity.pickImageFromGallery();
                 break;
             case R.id.button_next_two:
                 mSwitcher.onFragmentSwitch(new CategoryFragment(), CategoryFragment.TITLE, CategoryFragment.TAG);

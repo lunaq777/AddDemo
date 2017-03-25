@@ -1,15 +1,23 @@
 package com.example.lucky.adddemo;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import fragments.AddInfoFragment;
 import fragments.MyAddsFragment;
@@ -18,6 +26,7 @@ import utils.Switcher;
 
 public class NavigationActivity extends AppCompatActivity implements View.OnClickListener, Switcher {
 
+    private final int RESULT_LOAD_IMAGE = 1;
     private Toolbar mToolbar;
     private TextView mToolbarTitle;
     private ImageButton mMyAdds;
@@ -112,5 +121,30 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     public AddsAdapter getAdapter(Activity context){
         return new AddsAdapter(context, mContainer.getTitles(), mContainer.getPrices(),
                 mContainer.getLocations(), mContainer.getDescriptions(), mContainer.getPictures());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case RESULT_LOAD_IMAGE:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        final Uri imageUri = data.getData();
+                        final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                        final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                        mContainer.setPicture(selectedImage);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+        }
+    }
+
+    public void pickImageFromGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, RESULT_LOAD_IMAGE);
     }
 }
