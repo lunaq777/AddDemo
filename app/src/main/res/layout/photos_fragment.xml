@@ -4,9 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/button_next_two"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_text_height"
+        android:layout_gravity="center_vertical|bottom"
+        android:layout_marginBottom="@dimen/margin_ten"
+        android:layout_marginLeft="@dimen/button_margin_left"
+        android:background="@drawable/blue_rectangle"
+        android:shadowColor="?attr/colorPrimary"
+        android:text="@string/button_next"
+        android:textColor="?attr/colorPrimary" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_ten"
         android:orientation="horizontal">
 
         <ImageButton
@@ -15,7 +28,7 @@
             android:layout_height="@dimen/image_button_height"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:background="@null"
+            android:background="@drawable/blue_rectangle"
             android:padding="@dimen/images_padding"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_photo" />
@@ -26,10 +39,9 @@
             android:layout_height="@dimen/image_button_height"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:background="@null"
+            android:background="@drawable/blue_rectangle"
             android:padding="@dimen/images_padding"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_photo" />
     </LinearLayout>
-
 </FrameLayout>

@@ -3,4 +3,80 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_text_height"
+        android:layout_gravity="center_vertical|bottom"
+        android:layout_marginLeft="@dimen/button_margin_left"
+        android:layout_marginBottom="@dimen/margin_ten"
+        android:background="@drawable/blue_rectangle"
+        android:shadowColor="?attr/colorPrimary"
+        android:text="@string/button_next"
+        android:textColor="?attr/colorPrimary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/ph_num"
+        android:layout_width="@dimen/edit_height"
+        android:layout_height="@dimen/button_text_height"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/button_margin_left"
+        android:hint="@string/phn_num"
+        android:textColorHint="@color/colorGrey"
+        android:textColor="@color/colorBlack"
+        android:background="@drawable/blue_rectangle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="@dimen/edit_height"
+        android:layout_height="@dimen/layout_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/edit_width"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_width="@dimen/checkbox_width"
+            android:layout_height="match_parent"
+            android:buttonTint="@color/colorBlack"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/images_padding"
+            android:textSize="@dimen/face_loc_size"
+            android:text="@string/face_book"
+            android:textColor="?attr/colorPrimary"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="@dimen/edit_height"
+        android:layout_height="@dimen/layout_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/top_marge"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_width="@dimen/checkbox_width"
+            android:layout_height="match_parent"
+            android:buttonTint="@color/colorBlack"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/images_padding"
+            android:textSize="@dimen/face_loc_size"
+            android:text="@string/location"
+            android:textColor="?attr/colorPrimary"/>
+    </LinearLayout>
+
 </FrameLayout>

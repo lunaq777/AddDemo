@@ -8,11 +8,12 @@
         android:id="@+id/button_next"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_text_height"
-        android:layout_gravity="bottom"
+        android:layout_gravity="center_vertical|bottom"
         android:layout_marginLeft="@dimen/button_margin_left"
-        android:background="@color/colorBlue"
+        android:layout_marginBottom="@dimen/margin_ten"
+        android:background="@drawable/blue_rectangle"
         android:shadowColor="?attr/colorPrimary"
-        android:text="Next"
+        android:text="@string/button_next"
         android:textColor="?attr/colorPrimary" />
 
     <LinearLayout
@@ -24,20 +25,22 @@
             android:id="@+id/add_title"
             android:layout_width="@dimen/edit_height"
             android:layout_height="@dimen/button_text_height"
-            android:layout_marginLeft="@dimen/margin_left_foot"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/button_text_height"
             android:hint="@string/title_hint"
+            android:textColorHint="@color/colorGrey"
             android:textColor="@color/colorBlack"
-            android:background="@color/colorBlue" />
+            android:background="@drawable/blue_rectangle" />
 
         <EditText
             android:id="@+id/add_description"
             android:layout_width="@dimen/edit_height"
             android:layout_height="@dimen/edit_width"
-            android:layout_marginLeft="@dimen/margin_left_foot"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin_ten"
             android:hint="@string/description_hint"
-            android:background="@color/colorBlue"
+            android:textColorHint="@color/colorGrey"
+            android:background="@drawable/blue_rectangle"
             android:textColor="@color/colorBlack"
             android:gravity="top|left"
             android:lines="14"
@@ -46,19 +49,20 @@
             android:minLines="14" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/edit_height"
+            android:layout_height="@dimen/edit_width"
             android:layout_marginTop="@dimen/margin_ten"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
             <EditText
                 android:id="@+id/add_price"
                 android:layout_width="@dimen/edit_width"
                 android:layout_height="@dimen/button_text_height"
-                android:layout_marginLeft="@dimen/margin_left_foot"
                 android:hint="@string/price_hint"
+                android:textColorHint="@color/colorGrey"
                 android:textColor="@color/colorBlack"
-                android:background="@color/colorBlue" />
+                android:background="@drawable/blue_rectangle" />
 
             <TextView
                 android:id="@+id/price_text"

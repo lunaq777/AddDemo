@@ -3,5 +3,37 @@
 
     <string name="description_hint">Description (512 max)</string>
     <string name="title_hint">Title</string>
+    <string name="phn_num">Phone Number (optional)</string>
     <string name="price_hint">Price</string>
+    <string name="button_next">Next</string>
+    <string name="for_sale">For Sale</string>
+    <string name="services">Services</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="add_info">Add Info</string>
+    <string name="face_book">Share on Facebook</string>
+    <string name="location">Show my Location</string>
+
+
+    <string-array name="category">
+        <item>Category</item>
+        <item>-----</item>
+        <item>For Sale</item>
+        <item>Services</item>
+        <item>Vehicles</item>
+    </string-array>
+
+    <string-array name="subcategory">
+        <item>SubCategory</item>
+        <item>-----</item>
+        <item>Fashion and Beauty</item>
+        <item>Home and Garden</item>
+        <item>Handmade</item>
+        <item>Furniture</item>
+        <item>-----</item>
+        <item>Catering</item>
+        <item>Babysitting</item>
+        <item>Elder care</item>
+        <item>-----</item>
+        <item>Cars</item>
+    </string-array>
 </resources>

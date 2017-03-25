@@ -10,13 +10,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import fragments.AddInfoFragment;
+import utils.Switcher;
 
-public class NavigationActivity extends AppCompatActivity implements View.OnClickListener{
+public class NavigationActivity extends AppCompatActivity implements View.OnClickListener, Switcher{
 
     private Toolbar mToolbar;
     private TextView mToolbarTitle;
     private ImageButton mMyAdds;
     private ImageButton mPlaceAd;
+    private Fragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +30,16 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     private void initGUI(){
         mToolbar = (Toolbar) findViewById(R.id.navi_toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.navi_toolbar_title);
-        mToolbarTitle.setText("Add info");
+        mFragment = new Fragment(); //TODO
         mMyAdds = (ImageButton) findViewById(R.id.my_button);
         mPlaceAd = (ImageButton) findViewById(R.id.place_button);
+        mMyAdds.setOnClickListener(this);
+        mPlaceAd.setOnClickListener(this);
         mMyAdds.setImageDrawable(this.getDrawable(R.drawable.ic_my_ads_prs));
         mPlaceAd.setImageDrawable(this.getDrawable(R.drawable.ic_place_ads_prs));
 
-        Fragment fragment = new AddInfoFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.main_fragment_container, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.main_fragment_container, new AddInfoFragment(), AddInfoFragment.TAG).commit();
     }
 
     @Override
@@ -48,4 +51,17 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
+
+    @Override
+    public void onFragmentSwitch(Fragment fragment, String title, String tag) {
+        mToolbarTitle.setText(title);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.main_fragment_container, fragment, tag).commit();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
 }
